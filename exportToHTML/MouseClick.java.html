@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>MouseClick.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,0); }
+.s1 { color: rgb(0,0,128); font-weight: bold; }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MouseClick.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0"> 
+</span><span class="s1">import </span><span class="s0">java.applet.Applet; 
+</span><span class="s1">import </span><span class="s0">java.awt.*; 
+</span><span class="s1">import </span><span class="s0">java.awt.event.*; 
+ 
+</span><span class="s2">/* 
+ * Created by Devashish Katoriya on 15/3/17. 
+ */</span><span class="s0"> 
+</span><span class="s1">public class </span><span class="s0">MouseClick </span><span class="s1">extends </span><span class="s0">Applet </span><span class="s1">implements </span><span class="s0">MouseListener,MouseMotionListener { 
+ 
+    </span><span class="s1">private int </span><span class="s0">n,xx[],yy[]; 
+    </span><span class="s1">private static final int </span><span class="s0">LIMIT = </span><span class="s3">30</span><span class="s0">; 
+    </span><span class="s1">public void </span><span class="s0">mouseClicked(MouseEvent m) 
+    { 
+        </span><span class="s2">// TODO Auto-generated method stub</span><span class="s0"> 
+ 
+        xx[n]=m.getX(); 
+        yy[n]=m.getY(); 
+        n++; 
+        repaint(); 
+    } 
+ 
+    @Override 
+    </span><span class="s1">public void </span><span class="s0">mousePressed(MouseEvent mouseEvent) { 
+        setBackground(Color.YELLOW); 
+    } 
+ 
+    @Override 
+    </span><span class="s1">public void </span><span class="s0">mouseReleased(MouseEvent mouseEvent) { 
+        setBackground(Color.WHITE); 
+    } 
+ 
+    @Override 
+    </span><span class="s1">public void </span><span class="s0">mouseEntered(MouseEvent mouseEvent) { 
+ 
+    } 
+ 
+    @Override 
+    </span><span class="s1">public void </span><span class="s0">mouseExited(MouseEvent mouseEvent) { 
+ 
+    } 
+ 
+    </span><span class="s1">public void </span><span class="s0">init() 
+    { 
+        addMouseListener(</span><span class="s1">this</span><span class="s0">); 
+        addMouseMotionListener(</span><span class="s1">this</span><span class="s0">); 
+ 
+        setBackground(Color.WHITE); 
+ 
+        xx = </span><span class="s1">new int</span><span class="s0">[LIMIT]; 
+        yy = </span><span class="s1">new int</span><span class="s0">[LIMIT]; 
+        n = </span><span class="s3">0</span><span class="s0">; 
+ 
+    } 
+ 
+    </span><span class="s1">public  void </span><span class="s0">paint(Graphics g) 
+ 
+    { 
+        </span><span class="s1">if</span><span class="s0">(n&gt;=</span><span class="s3">2</span><span class="s0">) 
+        { 
+            g.drawPolygon(xx,yy,n); 
+ 
+            g.fillPolygon(xx,yy,n); 
+        } 
+ 
+    } 
+    @Override 
+    </span><span class="s1">public void </span><span class="s0">mouseDragged(java.awt.event.MouseEvent mouseEvent) { 
+ 
+    } 
+ 
+    @Override 
+    </span><span class="s1">public void </span><span class="s0">mouseMoved(java.awt.event.MouseEvent mouseEvent) { 
+ 
+    } 
+} 
+</span></pre>
+</body>
+</html>
