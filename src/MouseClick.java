@@ -1,3 +1,4 @@
+//Program to draw a Polygon and Fill it using Mouse Interface
 
 import java.applet.Applet;
 import java.awt.*;
@@ -10,10 +11,22 @@ public class MouseClick extends Applet implements MouseListener,MouseMotionListe
 
     private int n,xx[],yy[];
     private static final int LIMIT = 30;
+
+    public void init()
+    {
+        addMouseListener(this);
+        addMouseMotionListener(this);
+
+        setBackground(Color.WHITE);
+
+        xx = new int[LIMIT];
+        yy = new int[LIMIT];
+        n = 0;
+
+    }
+
     public void mouseClicked(MouseEvent m)
     {
-        // TODO Auto-generated method stub
-
         xx[n]=m.getX();
         yy[n]=m.getY();
         n++;
@@ -40,30 +53,16 @@ public class MouseClick extends Applet implements MouseListener,MouseMotionListe
 
     }
 
-    public void init()
-    {
-        addMouseListener(this);
-        addMouseMotionListener(this);
-
-        setBackground(Color.WHITE);
-
-        xx = new int[LIMIT];
-        yy = new int[LIMIT];
-        n = 0;
-
-    }
-
     public  void paint(Graphics g)
-
     {
         if(n>=2)
         {
             g.drawPolygon(xx,yy,n);
-
             g.fillPolygon(xx,yy,n);
         }
 
     }
+
     @Override
     public void mouseDragged(java.awt.event.MouseEvent mouseEvent) {
 

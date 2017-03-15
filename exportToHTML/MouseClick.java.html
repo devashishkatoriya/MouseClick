@@ -4,9 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 .ln { color: #999999; font-weight: normal; font-style: normal; }
-.s0 { color: rgb(0,0,0); }
-.s1 { color: rgb(0,0,128); font-weight: bold; }
-.s2 { color: rgb(128,128,128); font-style: italic; }
+.s0 { color: rgb(128,128,128); font-style: italic; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,0,128); font-weight: bold; }
 .s3 { color: rgb(0,0,255); }
 </style>
 </head>
@@ -17,22 +17,35 @@
 MouseClick.java</FONT>
 </center></TD></TR></TABLE>
 <pre>
-<span class="s0"> 
-</span><span class="s1">import </span><span class="s0">java.applet.Applet; 
-</span><span class="s1">import </span><span class="s0">java.awt.*; 
-</span><span class="s1">import </span><span class="s0">java.awt.event.*; 
+<span class="s0">//Program to draw a Polygon and Fill it using Mouse Interface</span><span class="s1"> 
  
-</span><span class="s2">/* 
+</span><span class="s2">import </span><span class="s1">java.applet.Applet; 
+</span><span class="s2">import </span><span class="s1">java.awt.*; 
+</span><span class="s2">import </span><span class="s1">java.awt.event.*; 
+ 
+</span><span class="s0">/* 
  * Created by Devashish Katoriya on 15/3/17. 
- */</span><span class="s0"> 
-</span><span class="s1">public class </span><span class="s0">MouseClick </span><span class="s1">extends </span><span class="s0">Applet </span><span class="s1">implements </span><span class="s0">MouseListener,MouseMotionListener { 
+ */</span><span class="s1"> 
+</span><span class="s2">public class </span><span class="s1">MouseClick </span><span class="s2">extends </span><span class="s1">Applet </span><span class="s2">implements </span><span class="s1">MouseListener,MouseMotionListener { 
  
-    </span><span class="s1">private int </span><span class="s0">n,xx[],yy[]; 
-    </span><span class="s1">private static final int </span><span class="s0">LIMIT = </span><span class="s3">30</span><span class="s0">; 
-    </span><span class="s1">public void </span><span class="s0">mouseClicked(MouseEvent m) 
+    </span><span class="s2">private int </span><span class="s1">n,xx[],yy[]; 
+    </span><span class="s2">private static final int </span><span class="s1">LIMIT = </span><span class="s3">30</span><span class="s1">; 
+ 
+    </span><span class="s2">public void </span><span class="s1">init() 
     { 
-        </span><span class="s2">// TODO Auto-generated method stub</span><span class="s0"> 
+        addMouseListener(</span><span class="s2">this</span><span class="s1">); 
+        addMouseMotionListener(</span><span class="s2">this</span><span class="s1">); 
  
+        setBackground(Color.WHITE); 
+ 
+        xx = </span><span class="s2">new int</span><span class="s1">[LIMIT]; 
+        yy = </span><span class="s2">new int</span><span class="s1">[LIMIT]; 
+        n = </span><span class="s3">0</span><span class="s1">; 
+ 
+    } 
+ 
+    </span><span class="s2">public void </span><span class="s1">mouseClicked(MouseEvent m) 
+    { 
         xx[n]=m.getX(); 
         yy[n]=m.getY(); 
         n++; 
@@ -40,56 +53,42 @@ MouseClick.java</FONT>
     } 
  
     @Override 
-    </span><span class="s1">public void </span><span class="s0">mousePressed(MouseEvent mouseEvent) { 
+    </span><span class="s2">public void </span><span class="s1">mousePressed(MouseEvent mouseEvent) { 
         setBackground(Color.YELLOW); 
     } 
  
     @Override 
-    </span><span class="s1">public void </span><span class="s0">mouseReleased(MouseEvent mouseEvent) { 
+    </span><span class="s2">public void </span><span class="s1">mouseReleased(MouseEvent mouseEvent) { 
         setBackground(Color.WHITE); 
     } 
  
     @Override 
-    </span><span class="s1">public void </span><span class="s0">mouseEntered(MouseEvent mouseEvent) { 
+    </span><span class="s2">public void </span><span class="s1">mouseEntered(MouseEvent mouseEvent) { 
  
     } 
  
     @Override 
-    </span><span class="s1">public void </span><span class="s0">mouseExited(MouseEvent mouseEvent) { 
+    </span><span class="s2">public void </span><span class="s1">mouseExited(MouseEvent mouseEvent) { 
  
     } 
  
-    </span><span class="s1">public void </span><span class="s0">init() 
+    </span><span class="s2">public  void </span><span class="s1">paint(Graphics g) 
     { 
-        addMouseListener(</span><span class="s1">this</span><span class="s0">); 
-        addMouseMotionListener(</span><span class="s1">this</span><span class="s0">); 
- 
-        setBackground(Color.WHITE); 
- 
-        xx = </span><span class="s1">new int</span><span class="s0">[LIMIT]; 
-        yy = </span><span class="s1">new int</span><span class="s0">[LIMIT]; 
-        n = </span><span class="s3">0</span><span class="s0">; 
- 
-    } 
- 
-    </span><span class="s1">public  void </span><span class="s0">paint(Graphics g) 
- 
-    { 
-        </span><span class="s1">if</span><span class="s0">(n&gt;=</span><span class="s3">2</span><span class="s0">) 
+        </span><span class="s2">if</span><span class="s1">(n&gt;=</span><span class="s3">2</span><span class="s1">) 
         { 
             g.drawPolygon(xx,yy,n); 
- 
             g.fillPolygon(xx,yy,n); 
         } 
  
     } 
+ 
     @Override 
-    </span><span class="s1">public void </span><span class="s0">mouseDragged(java.awt.event.MouseEvent mouseEvent) { 
+    </span><span class="s2">public void </span><span class="s1">mouseDragged(java.awt.event.MouseEvent mouseEvent) { 
  
     } 
  
     @Override 
-    </span><span class="s1">public void </span><span class="s0">mouseMoved(java.awt.event.MouseEvent mouseEvent) { 
+    </span><span class="s2">public void </span><span class="s1">mouseMoved(java.awt.event.MouseEvent mouseEvent) { 
  
     } 
 } 
